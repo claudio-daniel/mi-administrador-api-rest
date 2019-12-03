@@ -10,27 +10,27 @@ import com.springboot.data.app.models.entity.Servicio;
 
 public interface IDepartamentoService {
 
-	public List<Departamento> findAll();
+	List<Departamento> findAll();
 	
-	public void save(Departamento departamento);
+	void save(Departamento departamento);
 	
-	public Departamento findOne(Long id);
+	Departamento findOne(Long id);
 	
-	public void eliminar(Long id);
+	void eliminar(Long id);
 	
-	public List<Servicio> findServicioByNombre(String term);
+	List<Servicio> findServicioByNombre(String term);
 	
-	public List<Mantenimiento> findMantenimientoByNombre(String term);
+	List<Mantenimiento> findMantenimientoByNombre(String term);
 
-	public void saveExpensa(Expensa expensa);
+	void saveExpensa(Expensa expensa);
 	
-	public Servicio findServicioById(Long id);
+	Servicio findServicioById(Long id);
 	
-	public Mantenimiento findMantenimientoById(Long id);
+	Mantenimiento findMantenimientoById(Long id);
 	
-	public Expensa findExpensaById(Long idExpensa);
+	Expensa findExpensaById(Long idExpensa);
 	
-	public void deleteExpensaById(Long idExpensa);
+	void deleteExpensaById(Long idExpensa);
 	
-	public List<Departamento> findByEdificioId(Long edificioId);
+	List<Departamento> findByEdificioId(Long edificioId);
 }
