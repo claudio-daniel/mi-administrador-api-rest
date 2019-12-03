@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout.html :: head"></head>
+<body>
+
+	<header th:replace="layout/layout.html :: header"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success btn-xs" th:href="@{/departamento/formDepartamento}">Registrar
+						Departamento</a>
+				</h4>
+
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr>
+							<th sec:authorize="hasRole('ROLE_USER')">id:</th>
+							<th>nombre:</th>
+							<th>inquilino:</th>
+							<th>propietario:</th>
+							<th>estado:</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">generar expensa:</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">administrar servicios</th>
+							<th >Detalle</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Editar</th>
+							<th sec:authorize="hasRole('ROLE_ADMIN')">Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="departamento: ${departamentos}">
+							<td sec:authorize="hasRole('ROLE_USER')" th:text="${departamento.id}"></td>
+							<td th:text="${departamento.nombre}"></td>
+							<td th:text="${departamento.inquilino.nombre}"></td>
+							<td th:text="${departamento.propietario.nombre}"></td>
+							<td th:text="${departamento.estado.nombre}"></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs"
+								th:href="@{/expensa/formExpensa/} + ${departamento.id}"
+								th:text="expensa"></a></td>	
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs"
+								th:href="@{/servicio/listarServicios/} + ${departamento.id}" th:text="servicio"></a></td>							
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/departamento/verDepartamento/} + ${departamento.id}"
+								th:text="ver"></a></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-primary btn-xs"
+								th:href="@{/departamento/formDepartamento/} + ${departamento.id}"
+								th:text="editar"></a></td>
+							<td sec:authorize="hasRole('ROLE_ADMIN')"><a class="btn btn-danger btn-xs"
+								th:href="@{/departamento/eliminar/} + ${departamento.id}" th:text="eliminar"
+								onclick="return confirm('Esta seguro que desea eliminar edificio');"></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout.html :: footer"></footer>
+</body>
+</html>

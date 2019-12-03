@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:fragment="head">
+<meta charset="UTF-8" />
+<title
+	th:text="'Mi Administrador - ' + ${titulo}"></title>
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<link rel="stylesheet" th:href="@{/css/jquery-ui.min.css}" />
+
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet" />
+<link href="#" th:href="@{/css/contacts.css}" rel="stylesheet" />
+</head>
+<body>
+
+	<header th:fragment="header">
+		<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+			<a class="navbar-brand" href="#">Mi Administrador</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapsenavbar-collapse">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item-active"><a class="nav-link" href="#">Home</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/edificio/listarEdificios}">Edificio</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/departamento/listarDepartamentos}">Departamento</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/inquilino/listarInquilinos}">Inquilino</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/propietario/listarPropietarios}">Propietario</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about"
+						th:href="@{/direccion/listarDirecciones}">Direccion</a></li>
+				</ul>
+				<ul class="navbar-nav">
+					<li sec:authorize="!isAuthenticated()"><a
+						class="btn btn-outline-primary" th:href="@{/login}">Iniciar	Sesion</a></li>
+					<li sec:authorize="isAuthenticated()" class="dropdown">
+							<a class="btn btn-outline-primary dropdown-toggle" href="#"
+							role="button" id="dropdownMenuLink" data-toggle="dropdown"
+							aria-haspopup="true" aria-expanded="false"> <span sec:authentication="name"></span> </a>
+
+						<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+							<form id="logoutForm" th:action="@{/logout}" method="POST">
+								<button class="dropdown-item"
+									onclick="document.getElementById('logoutForn').submit();"
+									type="submit">Cerrar sesión</button>
+							</form>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+		<div class="alert alert-success" th:if="${success != null}"
+			th:text="${success}"></div>
+		<div class="alert alert-danger" th:if="${error != null}"
+			th:text="${error}"></div>
+		<div class="alert alert-warning" th:if="${warning != null}"
+			th:text="${warning}"></div>
+		<div class="alert alert-info" th:if="${info != null}"
+			th:text="${info}"></div>
+	</header>
+
+	<div class="container"></div>
+
+	<footer th:fragment="footer" class="container">
+		</hr>
+		<img th:src="@{/images/logospring.png}" alt="Spring Logo" />
+		<p sec:authorize="isAuthenticated()">
+			Usuario Logueado: <span sec:authentication="name"></span> | Roles: <span
+				sec:authentication="principal.authorities"></span>
+		<p>
+			Realizado Por <a
+				href="https://www.linkedin.com/in/claudio-carrizo-446a97128/">Spring
+				Boot</a> y <a
+				href="https://www.linkedin.com/in/claudio-carrizo-446a97128/">Thymeleaf</a>
+		</p>
+		<p>
+			Proyecto realizado en Eclipse, con Lenguaje Java 8 y Spring</br>Por
+			Claudio Carrizo
+		</p>
+		<!--  Opcional JavaScript-->
+		<script th:src="@{/js/jquery-3.2.1.min.js}"></script>
+		<script th:src="@{/js/popper.min.js}"></script>
+		<script th:src="@{/js/bootstrap.min.js}"></script>
+		<script th:src="@{/js/jquery-ui.min.js}"></script>
+
+	</footer>
+</body>
+</html>

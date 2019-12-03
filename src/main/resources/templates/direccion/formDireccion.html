@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout.html :: head"></head>
+<body>
+	<header th:replace="layout/layout.html :: header"></header>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/direccion/formDireccion}" th:object="${direccion}"
+					method="post">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Calle</label>
+						<div style="">
+							<input type="text" th:field="*{calle}" class="form-control" /> <small
+								class="form-text text-danger"
+								th:if="${#fields.hasErrors('calle')}" th:errors="*{calle}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">Numero </label>
+						<div style="">
+							<input type="number" th:field="*{numero}" class="form-control" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('numero')}" th:errors="*{numero}"></small>
+						</div>
+					</div>
+
+
+					<div style="">
+						<input type="submit" value="Crear Direccion" />
+					</div>
+					<input type="hidden" th:field="*{id}" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout.html :: footer"></footer>
+</body>
+</html>

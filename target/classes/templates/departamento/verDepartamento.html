@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="layout/layout :: head"></head>
+<body>
+
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container py-4">
+
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+			
+			<h4  class="card-title">
+				<a sec:authorize="hasRole('ROLE_ADMIN')" class="btn btn-success btn-xs" th:href="@{'/expensa/formExpensa/' + ${departamento.id}}" th:text="registrar ">expensa</a> 
+			</h4>
+			
+				<!-- <img th:if="${#strings.length(cliente.f) > 0}" class="img-thumbnail rounded float-left"
+					style="max-width: 25%;" th:src="@{'/uploads/' + ${cliente.foto}}"
+					th:alt="${cliente.foto}" />
+				 -->
+				<ul class="list-group">
+					<li class="list-group-item active" th:text="${departamento.nombre}"></li>
+					<li class="list-group-item active" th:text="${departamento.estado.nombre}"></li>
+					<li class="list-group-item" th:text="${departamento.inquilino.nombre}"></li>
+					<li class="list-group-item" th:text="${departamento.propietario.nombre}"></li>
+					<!--  <li class="list-group-item" th:text="${departamento.direccion.calle}"></li> -->
+					<li class="list-group-item" th:text="${departamento.cantidadHabitaciones}"></li>
+				</ul>
+				<div th:if="${#lists.isEmpty(departamento.expensas)}" class="alert alert-info my-4" th:text="'No hay expensas para ' + ${departamento.id}"></div>
+					<table th:if="${not #lists.isEmpty(departamento.expensas)}" class="table table-bordered table-striped my-4">
+						<thead class="thead-inverse">
+							<tr>
+								<th>nombre</th>
+								<th>estado</th>
+								<th>inquilino</th>
+								<th>propietario</th>
+								<th>direccion</th>
+								<th>habitaciones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="departamento: ${departamento.expensas}">
+								<td th:text="${expensa.id}"></td>
+								<!--
+								<td th:text="${factura.descripcion}"></td>
+								<td th:text="${factura.createAt}"></td>
+								<td th:text="${factura.total}"></td>
+								-->
+							</tr>
+						</tbody>
+					</table>
+				
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>

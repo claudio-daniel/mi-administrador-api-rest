@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout.html :: head"></head>
+<body>
+	<header th:replace="layout/layout.html :: header"></header>
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<form th:action="@{/departamento/formDepartamento}" th:object="${departamento}"
+					method="post">
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">nombre </label>
+						<div style="">
+							<input type="text" th:field="*{nombre}"
+								class="form-control" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('nombre')}"
+								th:errors="*{nombre}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">edificio</label>
+						<div style="">
+							<input type="text" th:field="*{edificio.id}" class="form-control" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('edificio.id')}"
+								th:errors="*{edificio.id}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">estado</label>
+						<div style="">
+							<input type="text" th:field="*{estado.id}" class="form-control" />
+							<small class="form-text text-danger"
+								th:if="${#fields.hasErrors('estado.id')}"
+								th:errors="*{estado.id}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">habitaciones </label>
+						<div style="">
+							<input type="text" th:field="*{cantidadHabitaciones}"
+								class="form-control" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('cantidadHabitaciones')}"
+								th:errors="*{cantidadHabitaciones}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">inquilino</label>
+						<div style="">
+							<input type="text" th:field="*{inquilino.id}"
+								class="form-control" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('inquilino.id')}"
+								th:errors="*{inquilino.id}"></small>
+						</div>
+					</div>
+					<div class="form-group row">
+						<label class="col-sm-2 col-form-label">propietario</label>
+						<div style="">
+							<input type="text" th:field="*{propietario.id}"
+								class="form-control" /> <small class="form-text text-danger"
+								th:if="${#fields.hasErrors('propietario.id')}"
+								th:errors="*{propietario.id}"></small>
+						</div>
+					</div>
+					<div style="">
+						<input type="submit" value="Registrar Departamento" />
+					</div>
+					<input type="hidden" th:field="*{id}" />
+				</form>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout.html :: footer"></footer>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout.html :: head"></head>
+<body>
+
+	<header th:replace="layout/layout.html :: header"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a class="btn btn-success btn-xs"  th:href="@{/inquilino/form}">Registrar Inquilino</a>
+				</h4>
+
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr>
+							<th>Id:</th>
+							<th>Nombre:</th>
+							<th>Apellido:</th>
+							<th>Correo:</th>
+							<th>Fecha:</th>
+							<th>Registrar Factura</th>
+							<th>Detalle</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="inquilino: ${inquilinos}">
+							<td th:text="${inquilino.id}"></td>
+							<td th:text="${inquilino.nombre}"></td>
+							<td th:text="${inquilino.apellido}"></td>
+							<td th:text="${inquilino.email}"></td>
+							<td th:text="${inquilino.createAt}"></td>
+							<td><a class="btn btn-success btn-xs"
+								th:href="@{/factura/form/} + ${inquilino.id}" th:text="registrar"></a></td> 
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/inquilino/verInquilino/} + ${inquilino.id}" th:text="ver"></a></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/inquilino/form/} + ${inquilino.id}" th:text="editar"></a></td>
+							<td><a class="btn btn-danger btn-xs"
+								th:href="@{/inquilino/eliminar/} + ${inquilino.id}" th:text="eliminar"
+								onclick="return confirm('Esta seguro que desea eliminar inqulino');"></a></td>
+						</tr>
+					</tbody>
+				</table>
+				<nav th:replace="paginator-nav :: paginator" ></nav>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout.html :: footer"></footer>
+</body>
+</html>

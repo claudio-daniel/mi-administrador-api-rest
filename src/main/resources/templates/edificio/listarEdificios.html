@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout.html :: head"></head>
+<body>
+
+	<header th:replace="layout/layout.html :: header"></header>
+
+	<div class="container py-4">
+		<div class="card bg-light">
+			<div class="card-header" th:text="${titulo}"></div>
+			<div class="card-body">
+				<h4 class="card-title">
+					<a class="btn btn-success btn-xs" th:href="@{/edificio/formEdificio}">Registrar
+						Edificio</a>
+				</h4>
+
+				<table class="table table-striped table-bordered">
+					<thead class="thead-inverse">
+						<tr>
+							<th>id:</th>
+							<th>nombre:</th>
+							<th>administrar departamentos:</th>
+							<th>administrar mantenimientos</th>
+							<th>Detalle</th>
+							<th>Editar</th>
+							<th>Eliminar</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="edificio: ${edificios}">
+							<td th:text="${edificio.id}"></td>
+							<td th:text="${edificio.nombre}"></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/departamento/listarDepartamentos/edificio/} + ${edificio.id}"
+								th:text="departamentos"></a></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/mantenimiento/listarMantenimientos/} + ${edificio.id}"
+								th:text="mantenimiento"></a></td>							
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/edificio/verEdificio/} + ${edificio.id}"
+								th:text="ver"></a></td>
+							<td><a class="btn btn-primary btn-xs"
+								th:href="@{/edificio/formEdificio/} + ${edificio.id}"
+								th:text="editar"></a></td>
+							<td><a class="btn btn-danger btn-xs"
+								th:href="@{/edificio/eliminar/} + ${edificio.id}" th:text="eliminar"
+								onclick="return confirm('Esta seguro que desea eliminar edificio');"></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+	<footer th:replace="layout/layout.html :: footer"></footer>
+</body>
+</html>
