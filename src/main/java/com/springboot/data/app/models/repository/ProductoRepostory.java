@@ -1,13 +1,13 @@
-package com.springboot.data.app.models.dao;
+package com.springboot.data.app.models.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.springboot.data.app.models.entity.Producto;
+import com.springboot.data.app.models.data.entity.Producto;
 
-public interface IProductoDao extends CrudRepository<Producto, Long>{
+public interface ProductoRepostory extends CrudRepository<Producto, Long>{
 	
 	@Query("SELECT p FROM Producto p "
 			+ "WHERE p.nombre LIKE %?1%")

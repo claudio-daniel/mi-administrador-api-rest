@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.springboot.data.app.models.entity.Edificio;
+import com.springboot.data.app.models.data.entity.Edificio;
 import com.springboot.data.app.models.service.imp.EdificioService;
 import com.springboot.data.app.util.RutasTemplates;
 

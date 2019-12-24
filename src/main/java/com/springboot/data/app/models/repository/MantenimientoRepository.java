@@ -1,4 +1,4 @@
-package com.springboot.data.app.models.dao;
+package com.springboot.data.app.models.repository;
 
 import java.util.List;
 
@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.data.app.models.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
 
 @Repository("mantenimientoRepository")
 public interface MantenimientoRepository extends CrudRepository<Mantenimiento, Long>

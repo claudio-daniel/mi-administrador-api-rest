@@ -1,4 +1,4 @@
-package com.springboot.data.app.models.dao;
+package com.springboot.data.app.models.repository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -6,7 +6,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
-import com.springboot.data.app.models.entity.Edificio;
+import com.springboot.data.app.models.data.entity.Edificio;
 
 public interface EdificioRepository extends CrudRepository<Edificio,  Serializable>{
 
@@ -16,4 +16,5 @@ public interface EdificioRepository extends CrudRepository<Edificio,  Serializab
 	
 	@Query ("SELECT e FROM Edificio e ")
 	List<Edificio> findAll();
+
 }

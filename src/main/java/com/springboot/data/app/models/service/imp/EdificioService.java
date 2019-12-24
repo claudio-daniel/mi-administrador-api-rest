@@ -7,11 +7,12 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.data.app.models.dao.EdificioRepository;
-import com.springboot.data.app.models.dao.MantenimientoRepository;
-import com.springboot.data.app.models.entity.Departamento;
-import com.springboot.data.app.models.entity.Edificio;
-import com.springboot.data.app.models.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Edificio;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
+import com.springboot.data.app.models.repository.EdificioRepository;
+import com.springboot.data.app.models.repository.MantenimientoRepository;
+import com.springboot.data.app.models.service.IDepartamentoService;
 import com.springboot.data.app.models.service.IEdificioService;
 
 @Service
@@ -24,6 +25,9 @@ public class EdificioService implements IEdificioService{
 	@Autowired
 	@Qualifier("mantenimientoRepository")
 	private MantenimientoRepository mantenimientoRepository;
+	
+	@Autowired
+	private IDepartamentoService departamentoService;
 	
 	@Transactional(readOnly = true)
 	@Override
@@ -56,14 +60,17 @@ public class EdificioService implements IEdificioService{
 
 	@Override
 	public void saveDepartamento(Departamento departamento) {
-		// TODO Auto-generated method stub
-		
+		departamentoService.save(departamento);
 	}
 
 	@Override
 	@Transactional(readOnly = true)
 	public Mantenimiento findMantenimientoById(Long id) {
 		return mantenimientoRepository.findOneById(id);
+	}
+
+	public Edificio findByDepartamentoId(Long departamentoId) {
+		return departamentoService.findEdificioById(departamentoId);
 	}
 
 }

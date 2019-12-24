@@ -1,4 +1,4 @@
-package com.springboot.data.app.models.entity;
+package com.springboot.data.app.models.data.entity;
 
 import java.io.Serializable;
 
@@ -14,8 +14,8 @@ import javax.persistence.Table;
 //Usar una interfaz itemExpensa para englobar mantenimiento y servicio. Y a traves de esa interfaz itemExpensa listar en el view de expensa los
 // servicio y mantenimientos registrados 
 @Entity
-@Table(name="mantenimiento_prueba")
-public class MantenimientoPrueba implements Serializable{
+@Table(name="mantenimientos")
+public class Mantenimiento implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
@@ -23,35 +23,35 @@ public class MantenimientoPrueba implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@ManyToOne(fetch= FetchType.EAGER)
+	@JoinColumn(name = "edificio_id")
+	private Edificio edificio;
+	
+	@Column(name="proveedor")
+	private String proveedor;
+	
+	@Column(name="tipo")
+	private String mantenimientoTipo;
+	
 	@Column(name="precio")
 	private Double precio;
 	
 	@Column(name="nombre")
 	private String nombre;
-	
-	@ManyToOne(fetch= FetchType.EAGER)
-	@JoinColumn(name = "edificio_id")
-	private Edificio edificio;
 
-	public MantenimientoPrueba() {
+	public Mantenimiento() {
 		
 	}
 	
-	public MantenimientoPrueba(Long id, Double precio, String nombre) {
+	public Mantenimiento(Long id, Edificio edificio, String proveedor, String mantenimientoTipo,
+			Double precio, String nombre) {
 		super();
 		this.id = id;
-		this.precio = precio;
 		this.nombre = nombre;
-	}
-	
-	
-
-	public MantenimientoPrueba(Long id, Double precio, String nombre, Edificio edificio) {
-		super();
-		this.id = id;
 		this.precio = precio;
-		this.nombre = nombre;
 		this.edificio = edificio;
+		this.proveedor = proveedor;
+		this.mantenimientoTipo = mantenimientoTipo;
 	}
 
 	public Long getId() {
@@ -60,6 +60,30 @@ public class MantenimientoPrueba implements Serializable{
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public Edificio getEdificio() {
+		return edificio;
+	}
+
+	public void setEdificio(Edificio edificio) {
+		this.edificio = edificio;
+	}
+
+	public String getProveedor() {
+		return proveedor;
+	}
+
+	public void setProveedor(String proveedor) {
+		this.proveedor = proveedor;
+	}
+
+	public String getMantenimientoTipo() {
+		return mantenimientoTipo;
+	}
+
+	public void setMantenimientoTipo(String mantenimientoTipo) {
+		this.mantenimientoTipo = mantenimientoTipo;
 	}
 
 	public Double getPrecio() {
@@ -77,15 +101,5 @@ public class MantenimientoPrueba implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-	public Edificio getEdificio() {
-		return edificio;
-	}
-
-	public void setEdificio(Edificio edificio) {
-		this.edificio = edificio;
-	}
-	
-	
 	
 }

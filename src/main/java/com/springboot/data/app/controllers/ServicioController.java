@@ -17,8 +17,8 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.springboot.data.app.models.entity.Departamento;
-import com.springboot.data.app.models.entity.Servicio;
+import com.springboot.data.app.models.data.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Servicio;
 import com.springboot.data.app.models.service.IDepartamentoService;
 import com.springboot.data.app.models.service.IServicioService;
 import com.springboot.data.app.util.RutasTemplates;

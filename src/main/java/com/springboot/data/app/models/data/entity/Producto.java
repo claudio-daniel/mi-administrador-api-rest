@@ -1,15 +1,13 @@
-package com.springboot.data.app.models.entity;
+package com.springboot.data.app.models.data.entity;
 
 import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -18,17 +16,14 @@ import javax.persistence.TemporalType;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@Table(name="servicios")
-public class Servicio implements Serializable {
+@Table(name="productos")
+public class Producto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	private Departamento departamento;
 	
 	private String nombre;
 	
@@ -39,10 +34,10 @@ public class Servicio implements Serializable {
 	@DateTimeFormat(pattern = "dd-MM-yyyy") 
 	private Date createAt;
 	
-	public Servicio() {	
+	public Producto() {	
 	}
 	
-	public Servicio(Long id, String nombre, Double precio, Date createAt) {
+	public Producto(Long id, String nombre, Double precio, Date createAt) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
@@ -50,10 +45,9 @@ public class Servicio implements Serializable {
 		this.createAt = createAt;
 	}
 	
-	public Servicio(Long id, Departamento departamento, String nombre, Double precio, Date createAt) {
+	public Producto(Long id, Departamento departamento, String nombre, Double precio, Date createAt) {
 		super();
 		this.id = id;
-		this.departamento = departamento;
 		this.nombre = nombre;
 		this.precio = precio;
 		this.createAt = createAt;
@@ -86,14 +80,6 @@ public class Servicio implements Serializable {
 	}
 	public void setCreateAt(Date createAt) {
 		this.createAt = createAt;
-	}
-
-	public Departamento getDepartamento() {
-		return departamento;
-	}
-
-	public void setDepartamento(Departamento departamento) {
-		this.departamento = departamento;
 	}	
 	
 }

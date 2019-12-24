@@ -1,4 +1,4 @@
-package com.springboot.data.app.models.dao;
+package com.springboot.data.app.models.repository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,10 +7,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.data.app.models.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Edificio;
 
 @Repository//("departamentoRepository")
-public interface IDepartamentoDao extends CrudRepository<Departamento, Serializable>{
+public interface DepartamentoRepository extends CrudRepository<Departamento, Serializable>{
 
 	@Query("SELECT d FROM Departamento d "
 //			+ "JOIN FETCH d.direccion dir "
@@ -30,4 +31,9 @@ public interface IDepartamentoDao extends CrudRepository<Departamento, Serializa
 	@Query("SELECT d FROM Departamento d "
 			+ "WHERE d.edificio.id = ?1")
 	List<Departamento> findByEdificioId(Long edificioId);
+	
+	@Query("SELECT d.edificio FROM Departamento d "
+			+ "WHERE d.id = ?1")
+	Edificio findEdificioById(Long departamentoId);
+	
 }

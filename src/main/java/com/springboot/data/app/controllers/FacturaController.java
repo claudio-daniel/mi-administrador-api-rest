@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.springboot.data.app.models.entity.Factura;
-import com.springboot.data.app.models.entity.Inquilino;
-import com.springboot.data.app.models.entity.ItemFactura;
-import com.springboot.data.app.models.entity.Producto;
+import com.springboot.data.app.models.data.entity.Factura;
+import com.springboot.data.app.models.data.entity.Inquilino;
+import com.springboot.data.app.models.data.entity.ItemFactura;
+import com.springboot.data.app.models.data.entity.Producto;
 import com.springboot.data.app.models.service.IInquilinoService;
 import com.springboot.data.app.util.RutasTemplates;
 

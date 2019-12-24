@@ -2,7 +2,7 @@ package com.springboot.data.app.models.service;
 
 import java.util.List;
 
-import com.springboot.data.app.models.entity.Servicio;
+import com.springboot.data.app.models.data.entity.Servicio;
 
 public interface IServicioService {
 

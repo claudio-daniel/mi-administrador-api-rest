@@ -22,12 +22,12 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.springboot.data.app.models.dao.MantenimientoPruebaRepository;
-import com.springboot.data.app.models.entity.Departamento;
-import com.springboot.data.app.models.entity.Expensa;
-import com.springboot.data.app.models.entity.ExpensaItem;
-import com.springboot.data.app.models.entity.Mantenimiento;
-import com.springboot.data.app.models.entity.MantenimientoPrueba;
+import com.springboot.data.app.models.data.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Expensa;
+import com.springboot.data.app.models.data.entity.ExpensaItem;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.MantenimientoPrueba;
+import com.springboot.data.app.models.repository.MantenimientoPruebaRepository;
 import com.springboot.data.app.models.service.IDepartamentoService;
 import com.springboot.data.app.models.service.imp.InquilinoServiceImp;
 import com.springboot.data.app.util.RutasTemplates;

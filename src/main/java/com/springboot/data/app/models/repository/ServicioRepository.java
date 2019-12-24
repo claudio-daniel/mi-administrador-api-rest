@@ -1,4 +1,4 @@
-package com.springboot.data.app.models.dao;
+package com.springboot.data.app.models.repository;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.springboot.data.app.models.entity.Servicio;
+import com.springboot.data.app.models.data.entity.Servicio;
 
 @Repository("servicioRepository")
-public interface IServicioDao extends CrudRepository<Servicio, Long>{
+public interface ServicioRepository extends CrudRepository<Servicio, Long>{
 
 	@Query("SELECT s FROM Servicio s "
 			+ "WHERE s.id = ?1")
@@ -29,4 +29,6 @@ public interface IServicioDao extends CrudRepository<Servicio, Long>{
 	@Query("SELECT s FROM Servicio s "
 			+ "WHERE s.id = ?1")
 	public Servicio findOne(Long id);
+
+	List<Servicio> findByDepartamentoId(Long departamentoId);
 }

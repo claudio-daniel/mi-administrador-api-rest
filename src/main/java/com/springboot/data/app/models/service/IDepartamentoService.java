@@ -2,10 +2,11 @@ package com.springboot.data.app.models.service;
 
 import java.util.List;
 
-import com.springboot.data.app.models.entity.Departamento;
-import com.springboot.data.app.models.entity.Expensa;
-import com.springboot.data.app.models.entity.Mantenimiento;
-import com.springboot.data.app.models.entity.Servicio;
+import com.springboot.data.app.models.data.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Edificio;
+import com.springboot.data.app.models.data.entity.Expensa;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.Servicio;
 
 
 public interface IDepartamentoService {
@@ -24,6 +25,8 @@ public interface IDepartamentoService {
 
 	void saveExpensa(Expensa expensa);
 	
+	Expensa crearExpensa(Long departamentoId);
+	
 	Servicio findServicioById(Long id);
 	
 	Mantenimiento findMantenimientoById(Long id);
@@ -33,4 +36,6 @@ public interface IDepartamentoService {
 	void deleteExpensaById(Long idExpensa);
 	
 	List<Departamento> findByEdificioId(Long edificioId);
+
+	Edificio findEdificioById(Long departamentoId);
 }

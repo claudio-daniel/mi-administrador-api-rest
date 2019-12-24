@@ -2,7 +2,7 @@ package com.springboot.data.app.models.service;
 
 import java.util.List;
 
-import com.springboot.data.app.models.entity.Propietario;
+import com.springboot.data.app.models.data.entity.Propietario;
 
 public interface IPropietarioService {
 	

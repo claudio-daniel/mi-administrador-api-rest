@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
-import com.springboot.data.app.models.entity.Direccion;
+import com.springboot.data.app.models.data.entity.Direccion;
 import com.springboot.data.app.models.service.IDireccionService;
 import com.springboot.data.app.util.RutasTemplates;
 @RequestMapping("/direccion")

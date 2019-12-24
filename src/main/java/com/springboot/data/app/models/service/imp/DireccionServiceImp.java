@@ -6,15 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.data.app.models.dao.IDireccionDao;
-import com.springboot.data.app.models.entity.Direccion;
+import com.springboot.data.app.models.data.entity.Direccion;
+import com.springboot.data.app.models.repository.DireccionRepository;
 import com.springboot.data.app.models.service.IDireccionService;
 
 @Service("direccionService")
 public class DireccionServiceImp implements IDireccionService {
 
 	@Autowired
-	private IDireccionDao direccionDao;
+	private DireccionRepository direccionDao;
 	
 	@Transactional(readOnly = true)
 	@Override

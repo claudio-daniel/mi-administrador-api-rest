@@ -7,25 +7,30 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.data.app.models.dao.ExpensaRepository;
-import com.springboot.data.app.models.dao.IDepartamentoDao;
-import com.springboot.data.app.models.dao.IServicioDao;
-import com.springboot.data.app.models.dao.MantenimientoRepository;
-import com.springboot.data.app.models.entity.Departamento;
-import com.springboot.data.app.models.entity.Expensa;
-import com.springboot.data.app.models.entity.Mantenimiento;
-import com.springboot.data.app.models.entity.Servicio;
+import com.springboot.data.app.models.data.entity.Departamento;
+import com.springboot.data.app.models.data.entity.Edificio;
+import com.springboot.data.app.models.data.entity.Expensa;
+import com.springboot.data.app.models.data.entity.ExpensaItem;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.Servicio;
+import com.springboot.data.app.models.repository.DepartamentoRepository;
+import com.springboot.data.app.models.repository.ExpensaRepository;
+import com.springboot.data.app.models.repository.MantenimientoRepository;
+import com.springboot.data.app.models.repository.ServicioRepository;
 import com.springboot.data.app.models.service.IDepartamentoService;
 
 @Service("departamentoService")
 public class DepartamentoServiceImp implements IDepartamentoService{
 
 	@Autowired
-	private IDepartamentoDao departamentoDao;
+	private EdificioService edificioService;
+	
+	@Autowired
+	private DepartamentoRepository departamentoRepository;
 	
 	@Autowired
 	@Qualifier("servicioRepository")
-	private IServicioDao servicioRepository;
+	private ServicioRepository servicioRepository;
 	
 	@Autowired
 	@Qualifier("mantenimientoRepository")
@@ -39,26 +44,26 @@ public class DepartamentoServiceImp implements IDepartamentoService{
 	@Override
 	public List<Departamento> findAll() {
 		
-		List<Departamento> list = departamentoDao.findAll() ;
+		List<Departamento> list = departamentoRepository.findAll() ;
 		
 		return list;
 	}
 
 	@Override
 	public void save(Departamento departamento) {
-		departamentoDao.save(departamento);
+		departamentoRepository.save(departamento);
 		
 	}
 
 	@Transactional(readOnly = true)
 	@Override
 	public Departamento findOne(Long id) {
-		return departamentoDao.findById(id);
+		return departamentoRepository.findById(id);
 	}
 
 	@Override
 	public void eliminar(Long id) {
-		departamentoDao.deleteById(id);		
+		departamentoRepository.deleteById(id);		
 	}
 
 	@Override
@@ -78,6 +83,30 @@ public class DepartamentoServiceImp implements IDepartamentoService{
 	public void saveExpensa(Expensa expensa) {
 		expensaRepository.save(expensa);
 	}
+	
+	@Override
+	@Transactional
+	public Expensa crearExpensa(Long departamentoId) {
+		
+		Expensa expensa = new Expensa();
+		
+		Edificio edificio = edificioService.findByDepartamentoId(departamentoId);;
+		List<Mantenimiento> mantenimientos = edificio.getMantenimientos();
+		
+		List<Servicio> servicios =  servicioRepository.findByDepartamentoId(departamentoId);
+		
+		mantenimientos.forEach(m -> {
+			expensa.addItemExpensa(new ExpensaItem(1, m.getPrecio()));
+		});
+		
+		servicios.forEach(s -> {
+			expensa.addItemExpensa(new ExpensaItem(1, s.getPrecio()));
+		});
+		
+		System.out.println("Total : " + expensa.getTotal());
+		
+		return expensa;
+	}	
 
 	@Override
 	@Transactional(readOnly = true)
@@ -106,6 +135,14 @@ public class DepartamentoServiceImp implements IDepartamentoService{
 	@Transactional(readOnly = true)
 	@Override
 	public List<Departamento> findByEdificioId(Long edificioId) {
-		return departamentoDao.findByEdificioId(edificioId);
-	}	
+		return departamentoRepository.findByEdificioId(edificioId);
+	}
+
+	@Transactional
+	@Override
+	public Edificio findEdificioById(Long departamentoId) {
+		return departamentoRepository.findEdificioById(departamentoId);
+	}
+	
+	
 }

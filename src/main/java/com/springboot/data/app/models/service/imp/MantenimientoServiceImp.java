@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.springboot.data.app.models.dao.MantenimientoRepository;
-import com.springboot.data.app.models.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
+import com.springboot.data.app.models.repository.MantenimientoRepository;
 import com.springboot.data.app.models.service.IMantenimientoService;
 
 @Service("mantenimientoService")

@@ -2,7 +2,7 @@ package com.springboot.data.app.models.service;
 
 import java.util.List;
 
-import com.springboot.data.app.models.entity.Mantenimiento;
+import com.springboot.data.app.models.data.entity.Mantenimiento;
 
 public interface IMantenimientoService {
 

@@ -1,13 +1,17 @@
- package com.springboot.data.app.models.entity;
+ package com.springboot.data.app.models.data.entity;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
@@ -15,6 +19,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -29,15 +34,17 @@ public class Inquilino implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotEmpty
+	@NotEmpty(message = "no puede estar vacío")
+	@Size(min=4, max=20, message = "debe tener entre 4 y 20 caracteres")
 	@Column(name="nombre")
 	private String nombre;
 	
-	@NotEmpty
+	@NotEmpty(message = "no puede estar vacío")
 	private String apellido;
 	
-	@NotEmpty
-	@Email
+	@NotEmpty(message = "no puede estar vacío")
+	@Email(message = "no es una dirección de correo válida")
+	@Column(unique = true, nullable = false)
 	private String email;
 	
 	@NotNull
@@ -46,12 +53,12 @@ public class Inquilino implements Serializable{
 	@DateTimeFormat(pattern = "dd-MM-yyyy") //sirve para dar formato en caso de precisarlo
 	private Date createAt;
 
-//	@OneToMany(mappedBy="inquilino",  cascade=CascadeType.ALL )
-//	private List<Factura> facturas; 
+	@OneToMany(mappedBy="inquilino",  cascade=CascadeType.ALL )
+	private List<Factura> facturas; 
 	
 	public Inquilino() {
 
-		//facturas = new ArrayList<Factura>();
+		facturas = new ArrayList<Factura>();
 	}
 	
 	public Inquilino(Long id, String nombre, String apellido, String email, Date createAt) {
@@ -108,17 +115,17 @@ public class Inquilino implements Serializable{
 		this.createAt = createAt;
 	}
 
-//	public List<Factura> getFacturas() {
-//		return facturas;
-//	}
-//
-//	public void setFacturas(List<Factura> facturas) {
-//		this.facturas = facturas;
-//	}
-//	
-//	public void agregarFactura(Factura factura) {
-//		this.facturas.add(factura);
-//	}
+	public List<Factura> getFacturas() {
+		return facturas;
+	}
+
+	public void setFacturas(List<Factura> facturas) {
+		this.facturas = facturas;
+	}
+	
+	public void agregarFactura(Factura factura) {
+		this.facturas.add(factura);
+	}
 	
 	@Override
 	public String toString() {

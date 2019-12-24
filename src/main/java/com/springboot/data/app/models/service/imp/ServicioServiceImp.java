@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.springboot.data.app.models.dao.IServicioDao;
-import com.springboot.data.app.models.entity.Servicio;
+import com.springboot.data.app.models.data.entity.Servicio;
+import com.springboot.data.app.models.repository.ServicioRepository;
 import com.springboot.data.app.models.service.IServicioService;
 
 @Service("servicioService")
@@ -15,7 +15,7 @@ public class ServicioServiceImp implements IServicioService{
 
 	@Autowired
 	@Qualifier("servicioRepository")
-	private IServicioDao servicioRepository;
+	private ServicioRepository servicioRepository;
 
 	@Override
 	public List<Servicio> findAll() {

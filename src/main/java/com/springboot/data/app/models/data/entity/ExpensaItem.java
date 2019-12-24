@@ -1,4 +1,4 @@
-package com.springboot.data.app.models.entity;
+package com.springboot.data.app.models.data.entity;
 
 import java.io.Serializable;
 
@@ -32,6 +32,12 @@ public class ExpensaItem implements Serializable{
 	@JoinColumn(name="servicio_id")
 	private Servicio servicio;
 
+	private Double precio;
+	
+	private Boolean enFactura;
+	
+	private Boolean cobrado;
+	
 	public ExpensaItem() {	
 	}
 
@@ -43,6 +49,11 @@ public class ExpensaItem implements Serializable{
 		this.servicio = servicio;
 	}
 
+	public ExpensaItem(Integer cantidad, Double precio) {
+		super();
+		this.cantidad = cantidad;
+		this.precio = precio;
+	}
 
 	public Long getId() {
 		return id;
@@ -78,11 +89,34 @@ public class ExpensaItem implements Serializable{
 		return servicio;
 	}
 
+	public Boolean getEnFactura() {
+		return enFactura;
+	}
+
+	public void setEnFactura(Boolean enFactura) {
+		this.enFactura = enFactura;
+	}
+
+	public Boolean getCobrado() {
+		return cobrado;
+	}
+
+	public void setCobrado(Boolean cobrado) {
+		this.cobrado = cobrado;
+	}
 
 	public void setServicio(Servicio servicio) {
 		this.servicio = servicio;
 	}
 	
+	public Double getPrecio() {
+		return precio;
+	}
+
+	public void setPrecio(Double precio) {
+		this.precio = precio;
+	}
+
 	public Double calcularImporte() {
 		return (cantidad.doubleValue() * mantenimiento.getPrecio()) + (cantidad.doubleValue() * servicio.getPrecio()); 
 	}

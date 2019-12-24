@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
-import com.springboot.data.app.models.entity.Factura;
-import com.springboot.data.app.models.entity.Inquilino;
-import com.springboot.data.app.models.entity.Producto;
+import com.springboot.data.app.models.data.entity.Factura;
+import com.springboot.data.app.models.data.entity.Inquilino;
+import com.springboot.data.app.models.data.entity.Producto;
 
 public interface IInquilinoService {
 

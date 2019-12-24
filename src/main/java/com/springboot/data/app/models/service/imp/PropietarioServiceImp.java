@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.springboot.data.app.models.dao.PropietarioRepository;
-import com.springboot.data.app.models.entity.Propietario;
+import com.springboot.data.app.models.data.entity.Propietario;
+import com.springboot.data.app.models.repository.PropietarioRepository;
 import com.springboot.data.app.models.service.IPropietarioService;
 
 @Service("propietarioService")

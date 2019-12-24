@@ -9,12 +9,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.data.app.models.dao.FacturaRepository;
-import com.springboot.data.app.models.dao.InquilinoRepository;
-import com.springboot.data.app.models.dao.IProductoDao;
-import com.springboot.data.app.models.entity.Factura;
-import com.springboot.data.app.models.entity.Inquilino;
-import com.springboot.data.app.models.entity.Producto;
+import com.springboot.data.app.models.data.entity.Factura;
+import com.springboot.data.app.models.data.entity.Inquilino;
+import com.springboot.data.app.models.data.entity.Producto;
+import com.springboot.data.app.models.repository.FacturaRepository;
+import com.springboot.data.app.models.repository.ProductoRepostory;
+import com.springboot.data.app.models.repository.InquilinoRepository;
 import com.springboot.data.app.models.service.IInquilinoService;
 
 @Service("inquilinoService")
@@ -24,7 +24,7 @@ public class InquilinoServiceImp implements IInquilinoService {
 	private InquilinoRepository inquilinoRepository;
 	
 	@Autowired
-	private IProductoDao productoDao;
+	private ProductoRepostory productoDao;
 	
 	@Autowired
 	@Qualifier("facturaRepository")

@@ -1,8 +1,8 @@
-package com.springboot.data.app.models.dao;
+package com.springboot.data.app.models.repository;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.springboot.data.app.models.entity.Usuario;
+import com.springboot.data.app.models.data.entity.Usuario;
 
 public interface UserRepository extends CrudRepository<Usuario,Long>{
 
