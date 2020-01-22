@@ -1,7 +1,10 @@
 package com.springboot.data.app.models.service.imp;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.springboot.data.app.models.data.transformer.InquilinoTransformer;
+import com.springboot.data.app.models.data.view.InquilinoView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -22,6 +25,9 @@ public class InquilinoServiceImp implements IInquilinoService {
 
 	@Autowired
 	private InquilinoRepository inquilinoRepository;
+
+	@Autowired
+	private InquilinoTransformer inquilinoTransformer;
 	
 	@Autowired
 	private ProductoRepostory productoDao;
@@ -32,21 +38,32 @@ public class InquilinoServiceImp implements IInquilinoService {
 	
 	@Transactional(readOnly = true)
 	@Override
-	public List<Inquilino> findAll() {
-		return (List<Inquilino>) inquilinoRepository.findAll();
+	public List<InquilinoView> findAll() {
+
+		List<Inquilino> inquilinos = (List<Inquilino>) inquilinoRepository.findAll();
+
+		List<InquilinoView> inquilinoViews = inquilinos
+				.stream()
+				.map( inquilino -> inquilinoTransformer.convetToInquilinoView(inquilino) )
+				.collect( Collectors.toList() );
+
+		return  inquilinoViews;
 	}
 	
 	@Transactional
 	@Override
-	public Inquilino save(Inquilino inquilino) {
-		return inquilinoRepository.save(inquilino);	
+	public InquilinoView save(InquilinoView inquilinoView) {
+
+		Inquilino inquilino = inquilinoTransformer.convetToInquilino(inquilinoView);
+
+		return inquilinoTransformer.convetToInquilinoView(inquilinoRepository.save(inquilino));
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public Inquilino findOne(Long id) {	
-		Inquilino inquilino = inquilinoRepository.findOneById(id);
-		return inquilino;
+	public InquilinoView findOne(Long id) {
+
+		return inquilinoTransformer.convetToInquilinoView(inquilinoRepository.findOneById(id));
 	}
 	
 	@Transactional

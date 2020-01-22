@@ -7,11 +7,12 @@ import com.springboot.data.app.models.data.entity.Edificio;
 import com.springboot.data.app.models.data.entity.Expensa;
 import com.springboot.data.app.models.data.entity.Mantenimiento;
 import com.springboot.data.app.models.data.entity.Servicio;
+import com.springboot.data.app.models.data.view.DepartamentoView;
 
 
 public interface IDepartamentoService {
 
-	List<Departamento> findAll();
+	List<DepartamentoView> findAll();
 	
 	void save(Departamento departamento);
 	

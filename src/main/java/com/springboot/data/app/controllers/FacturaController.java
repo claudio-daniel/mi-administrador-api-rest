@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.springboot.data.app.models.data.view.InquilinoView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -61,7 +62,7 @@ public class FacturaController {
 	public String crear(@PathVariable(value = "inquilinoId") Long inquilinoId, Map<String, Object> model,
 			RedirectAttributes flash) {
 
-		Inquilino inquilino = inquilinoService.findOne(inquilinoId);
+		InquilinoView inquilino = inquilinoService.findOne(inquilinoId);
 
 		if (inquilino == null) {
 			flash.addFlashAttribute("El inquilino no se encuentra registrado");
@@ -69,7 +70,6 @@ public class FacturaController {
 		}
 
 		Factura factura = new Factura();
-		factura.setInquilino(inquilino);
 
 		model.put("factura", factura);
 		model.put("titulo", "Crear Factura");

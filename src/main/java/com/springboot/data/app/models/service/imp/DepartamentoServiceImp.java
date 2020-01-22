@@ -1,7 +1,10 @@
 package com.springboot.data.app.models.service.imp;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
+import com.springboot.data.app.models.data.transformer.DepartamentoTransformer;
+import com.springboot.data.app.models.data.view.DepartamentoView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -23,6 +26,9 @@ import com.springboot.data.app.models.service.IDepartamentoService;
 public class DepartamentoServiceImp implements IDepartamentoService{
 
 	@Autowired
+	private DepartamentoTransformer departamentoTransformer;
+
+	@Autowired
 	private EdificioService edificioService;
 	
 	@Autowired
@@ -42,11 +48,14 @@ public class DepartamentoServiceImp implements IDepartamentoService{
 
 	@Transactional(readOnly = true)
 	@Override
-	public List<Departamento> findAll() {
+	public List<DepartamentoView> findAll() {
 		
-		List<Departamento> list = departamentoRepository.findAll() ;
+		List<DepartamentoView> departamentoViews = ( departamentoRepository.findAll() )
+				.stream()
+				.map(departamento -> departamentoTransformer.convertToDepartamentoView(departamento))
+				.collect(Collectors.toList()); ;
 		
-		return list;
+		return departamentoViews;
 	}
 
 	@Override

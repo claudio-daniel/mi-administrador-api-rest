@@ -3,9 +3,7 @@ package com.springboot.data.app.models.data.view;
 import java.io.Serializable;
 import java.util.Date;
 
-public class InquilinoView implements Serializable {
-
-	private static final long serialVersionUID = 1L;
+public class InquilinoView{
 
 	private Long id;
 
@@ -16,18 +14,6 @@ public class InquilinoView implements Serializable {
 	private String email;
 
 	private Date createAt;
-
-	public InquilinoView() {
-	}
-
-	public InquilinoView(Long id, String nombre, String apellido, String email, Date createAt) {
-		super();
-		this.id = id;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.email = email;
-		this.createAt = createAt;
-	}
 
 	public Long getId() {
 		return id;

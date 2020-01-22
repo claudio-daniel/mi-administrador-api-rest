@@ -24,18 +24,11 @@ public class DireccionServiceImp implements IDireccionService {
 	
 	@Transactional
 	@Override
-	public void save(Direccion direccion) {
-		direccionDao.save(direccion);
-		
-	}
+	public void save(Direccion direccion) { direccionDao.save(direccion); }
 
 	@Transactional(readOnly = true)
 	@Override
-	public Direccion findOne(Long id) {
-		
-		Direccion direccion = direccionDao.findOneById(id);
-		return direccion;
-	}
+	public Direccion findOne(Long id) { Direccion direccion = direccionDao.findOneById(id); return direccion; }
 	
 	@Transactional
 	@Override
