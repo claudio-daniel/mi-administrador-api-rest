@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.validation.Valid;
 
+import com.springboot.data.app.models.data.view.DepartamentoView;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.springboot.data.app.models.data.entity.Departamento;
 import com.springboot.data.app.models.data.entity.Expensa;
 import com.springboot.data.app.models.data.entity.ExpensaItem;
 import com.springboot.data.app.models.data.entity.Mantenimiento;
@@ -72,7 +72,7 @@ public class ExpensaController {
 	public String crear(@PathVariable(value = "departamentoId") Long departamentoId, Map<String, Object> model,
 			RedirectAttributes flash) {
 
-		Departamento departamento = departamentoService.findOne(departamentoId);
+		DepartamentoView departamento = departamentoService.findOne(departamentoId);
 
 		if (departamento == null) {
 			flash.addFlashAttribute("El departamento no se encuentra registrado");
@@ -80,7 +80,7 @@ public class ExpensaController {
 		}
 
 		Expensa expensa = new Expensa();
-		expensa.setDepartamento(departamento);
+		//expensa.setDepartamento(departamento);
 
 		model.put("expensa", expensa);
 		model.put("titulo", "Crear Expensa");

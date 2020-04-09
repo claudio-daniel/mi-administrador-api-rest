@@ -14,9 +14,9 @@ public interface IDepartamentoService {
 
 	List<DepartamentoView> findAll();
 	
-	void save(Departamento departamento);
+	DepartamentoView save(DepartamentoView departamentoView);
 	
-	Departamento findOne(Long id);
+	DepartamentoView findOne(Long id);
 	
 	void eliminar(Long id);
 	

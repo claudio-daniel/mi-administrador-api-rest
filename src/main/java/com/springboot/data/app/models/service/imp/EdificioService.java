@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.springboot.data.app.models.data.entity.Departamento;
 import com.springboot.data.app.models.data.entity.Edificio;
 import com.springboot.data.app.models.data.entity.Mantenimiento;
 import com.springboot.data.app.models.repository.EdificioRepository;
@@ -58,10 +57,8 @@ public class EdificioService implements IEdificioService{
 		return mantenimientoRepository.findByNombre(term);
 	}
 
-	@Override
-	public void saveDepartamento(Departamento departamento) {
-		departamentoService.save(departamento);
-	}
+	//@Override
+	//public void saveDepartamento(DepartamentoView departamento) {departamentoService.save(departamento);}
 
 	@Override
 	@Transactional(readOnly = true)

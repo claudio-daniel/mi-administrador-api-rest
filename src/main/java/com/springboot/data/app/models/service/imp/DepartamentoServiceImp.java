@@ -49,25 +49,26 @@ public class DepartamentoServiceImp implements IDepartamentoService{
 	@Transactional(readOnly = true)
 	@Override
 	public List<DepartamentoView> findAll() {
-		
-		List<DepartamentoView> departamentoViews = ( departamentoRepository.findAll() )
+
+		return ( departamentoRepository.findAll() )
 				.stream()
 				.map(departamento -> departamentoTransformer.convertToDepartamentoView(departamento))
-				.collect(Collectors.toList()); ;
-		
-		return departamentoViews;
+				.collect(Collectors.toList());
 	}
 
 	@Override
-	public void save(Departamento departamento) {
-		departamentoRepository.save(departamento);
-		
+	public DepartamentoView save(DepartamentoView departamentoView) {
+		Departamento departamento = departamentoTransformer.convertToDepartamento(departamentoView);
+
+		departamentoView = departamentoTransformer.convertToDepartamentoView(departamentoRepository.save(departamento));
+
+		return departamentoView;
 	}
 
 	@Transactional(readOnly = true)
 	@Override
-	public Departamento findOne(Long id) {
-		return departamentoRepository.findById(id);
+	public DepartamentoView findOne(Long id) {
+		return departamentoTransformer.convertToDepartamentoView(departamentoRepository.findById(id));
 	}
 
 	@Override
@@ -99,18 +100,14 @@ public class DepartamentoServiceImp implements IDepartamentoService{
 		
 		Expensa expensa = new Expensa();
 		
-		Edificio edificio = edificioService.findByDepartamentoId(departamentoId);;
+		Edificio edificio = edificioService.findByDepartamentoId(departamentoId);
 		List<Mantenimiento> mantenimientos = edificio.getMantenimientos();
 		
 		List<Servicio> servicios =  servicioRepository.findByDepartamentoId(departamentoId);
-		
-		mantenimientos.forEach(m -> {
-			expensa.addItemExpensa(new ExpensaItem(1, m.getPrecio()));
-		});
-		
-		servicios.forEach(s -> {
-			expensa.addItemExpensa(new ExpensaItem(1, s.getPrecio()));
-		});
+
+		mantenimientos.forEach(m -> expensa.addItemExpensa(new ExpensaItem(1, m.getPrecio())));
+
+		servicios.forEach(s -> expensa.addItemExpensa(new ExpensaItem(1, s.getPrecio())));
 		
 		System.out.println("Total : " + expensa.getTotal());
 		

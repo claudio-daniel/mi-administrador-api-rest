@@ -2,7 +2,6 @@ package com.springboot.data.app.models.service;
 
 import java.util.List;
 
-import com.springboot.data.app.models.data.entity.Departamento;
 import com.springboot.data.app.models.data.entity.Edificio;
 import com.springboot.data.app.models.data.entity.Mantenimiento;
 
@@ -18,7 +17,7 @@ public interface IEdificioService {
 	
 	public List<Mantenimiento> findMantenimientoByNombre(String term);
 
-	public void saveDepartamento(Departamento departamento);
+	//public void saveDepartamento(DepartamentoView departamento);
 	
 	public Mantenimiento findMantenimientoById(Long id);
 

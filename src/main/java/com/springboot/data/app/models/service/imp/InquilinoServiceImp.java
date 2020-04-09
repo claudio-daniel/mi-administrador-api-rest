@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 import com.springboot.data.app.models.data.transformer.InquilinoTransformer;
 import com.springboot.data.app.models.data.view.InquilinoView;
+import com.springboot.data.app.models.repository.DepartamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.data.domain.Page;
@@ -31,6 +32,9 @@ public class InquilinoServiceImp implements IInquilinoService {
 	
 	@Autowired
 	private ProductoRepostory productoDao;
+
+	@Autowired
+	private DepartamentoRepository departamentoRepository;
 	
 	@Autowired
 	@Qualifier("facturaRepository")
@@ -46,7 +50,6 @@ public class InquilinoServiceImp implements IInquilinoService {
 				.stream()
 				.map( inquilino -> inquilinoTransformer.convetToInquilinoView(inquilino) )
 				.collect( Collectors.toList() );
-
 		return  inquilinoViews;
 	}
 	

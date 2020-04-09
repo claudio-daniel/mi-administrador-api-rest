@@ -70,17 +70,17 @@ public class ServicioController {
 	public String crear(@PathVariable(value="departamentoId")Long departamentoId, Map <String, Object> model, RedirectAttributes flash) 
 	{
 		
-		Departamento departamento = departamentoService.findOne(departamentoId);
-		if(departamento == null) 
-		{
-			flash.addFlashAttribute("El departamento no se encuentra registrado");
-			return "redirect:/"+  RutasTemplates.DEPARTAMENTO_LISTAR;
-		}
-		Servicio servicio =  new Servicio();
-		servicio.setDepartamento(departamento);
+		//Departamento departamento = departamentoService.findOne(departamentoId);
+		//if(departamento == null)
+		//{
+		//	flash.addFlashAttribute("El departamento no se encuentra registrado");
+		//	return "redirect:/"+  RutasTemplates.DEPARTAMENTO_LISTAR;
+		//}
+		//Servicio servicio =  new Servicio();
+		//servicio.setDepartamento(departamento);
 		
-		model.put("servicio", servicio);
-		model.put("titulo", "Registrar Servicio");
+		//model.put("servicio", servicio);
+		//model.put("titulo", "Registrar Servicio");
 		
 		return  RutasTemplates.SERVICIO_FORM;
 	}
@@ -103,7 +103,7 @@ public class ServicioController {
 		Departamento departamento = null;
 		if (id > 0) {
 			servicio = servicioService.findOne(id);
-			departamento = departamentoService.findOne(servicio.getDepartamento().getId());
+			//departamento = departamentoService.findOne(servicio.getDepartamento().getId());
 		} else {
 			return "redirect:/" +  RutasTemplates.SERVICIO_LISTAR;
 		}

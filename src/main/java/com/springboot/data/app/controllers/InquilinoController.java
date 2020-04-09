@@ -26,11 +26,11 @@ public class InquilinoController {
 	private IInquilinoService inquilinoService;
 
 	@RequestMapping(value = "/listarInquilinos")
-	public List<InquilinoView> listar() {
+	public ResponseEntity<?> listar() {
 
 		Map<String, Object> response = new HashMap<>();
 
-		List<InquilinoView> inquilinosView = new ArrayList<>();
+		List<InquilinoView> inquilinosView;
 
 		try{
 			inquilinosView = inquilinoService.findAll();
@@ -38,15 +38,14 @@ public class InquilinoController {
 			response.put("mensaje", "Ha ocurrido un error al consultar la lista de inquilinos");
 			response.put("error", Objects.requireNonNull(e.getMessage()).concat(" : ").concat(e.getMessage()));
 
-			//return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
 		if (! inquilinosView.isEmpty()){
 			response.put("inquilinos" , inquilinosView);
 		}
 
-		//return new ResponseEntity<>(response, HttpStatus.OK);
-		return inquilinosView;
+		return new ResponseEntity<>(response, HttpStatus.OK);
 	}
 
 	@GetMapping(value = "/verInquilino/{id}")

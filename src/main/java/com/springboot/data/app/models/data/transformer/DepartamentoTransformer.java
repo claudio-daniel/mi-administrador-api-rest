@@ -2,8 +2,8 @@ package com.springboot.data.app.models.data.transformer;
 
 import com.springboot.data.app.models.data.entity.Departamento;
 import com.springboot.data.app.models.data.entity.Edificio;
-import com.springboot.data.app.models.data.view.DepartamentoView;
 
+import com.springboot.data.app.models.data.view.DepartamentoView;
 import com.springboot.data.app.models.service.IEdificioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -32,8 +32,8 @@ public class DepartamentoTransformer {
 
             departamento.setExpensas(departamentoView.getExpensas());
             departamento.setEstado(departamentoView.getEstado());
-            departamento.setInquilino(departamentoView.getInquilino());
-            departamento.setPropietario(departamentoView.getPropietario());
+            //departamento.setInquilino(departamentoView.getInquilino());
+            //departamento.setPropietario(departamentoView.getPropietario());
             departamento.setServicios(departamentoView.getServicios());
         }
 
@@ -53,11 +53,20 @@ public class DepartamentoTransformer {
             edificio.put("nombre", departamento.getEdificio().getNombre());
             departamentoView.setEdificio(edificio);
 
-            departamentoView.setExpensas(departamento.getExpensas());
-            departamentoView.setEstado(departamento.getEstado());
-            departamentoView.setInquilino(departamento.getInquilino());
-            departamentoView.setPropietario(departamento.getPropietario());
-            departamentoView.setServicios(departamento.getServicios());
+    //        departamentoView.setExpensas(departamento.getExpensas());
+    //        departamentoView.setEstado(departamento.getEstado());
+
+            Map<String, Object> propietario = new HashMap<>();
+            propietario.put("id", departamento.getPropietario().getId());
+            propietario.put("nombre", departamento.getPropietario().getNombre());
+            departamentoView.setPropietario(propietario);
+
+            Map<String, Object> inquilino = new HashMap<>();
+            inquilino.put("id", departamento.getInquilino().getId());
+            inquilino.put("nombre", departamento.getInquilino().getNombre());
+            departamentoView.setInquilino(inquilino);
+
+    //        departamentoView.setServicios(departamento.getServicios());
         }
 
         return departamentoView;
