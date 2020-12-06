@@ -16,7 +16,7 @@ import com.springboot.data.app.models.data.entity.Direccion;
 import com.springboot.data.app.models.service.IDireccionService;
 import com.springboot.data.app.util.RutasTemplates;
 @RequestMapping("/direccion")
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @SessionAttributes("")
 @Controller
 public class DireccionController {

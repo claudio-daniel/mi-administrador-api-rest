@@ -27,7 +27,7 @@ import com.springboot.data.app.models.service.imp.InquilinoServiceImp;
 import com.springboot.data.app.util.RutasTemplates;
 
 @RequestMapping("/expensa")
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @SessionAttributes("expensa")
 @Controller
 public class ExpensaController {

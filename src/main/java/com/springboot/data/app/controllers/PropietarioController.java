@@ -17,7 +17,7 @@ import com.springboot.data.app.models.service.imp.PropietarioServiceImp;
 import com.springboot.data.app.util.RutasTemplates;
 
 @SessionAttributes("/propietario")
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @RequestMapping("propietario")
 @Controller
 public class PropietarioController {

@@ -21,7 +21,7 @@ import com.springboot.data.app.util.RutasTemplates;
 
 @Controller
 @RequestMapping("/servicio")
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @SessionAttributes("servicio")
 public class ServicioController {
 

@@ -23,7 +23,7 @@ import com.springboot.data.app.models.service.IDepartamentoService;
 import com.springboot.data.app.util.RutasTemplates;
 
 @RestController
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @RequestMapping({"/", "/my_administration"})
 @SessionAttributes("departamento")
 public class DepartamentoController {

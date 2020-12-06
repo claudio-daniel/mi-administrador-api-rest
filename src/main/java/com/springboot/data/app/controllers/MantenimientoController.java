@@ -20,7 +20,7 @@ import com.springboot.data.app.models.service.imp.MantenimientoServiceImp;
 import com.springboot.data.app.util.RutasTemplates;
 
 @Controller
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @RequestMapping("/mantenimiento")
 @SessionAttributes("mantenimiento")
 public class MantenimientoController {

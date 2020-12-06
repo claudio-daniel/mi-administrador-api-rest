@@ -21,7 +21,7 @@ import com.springboot.data.app.util.RutasTemplates;
 
 //@Secured("ROLE_ADMIN")
 @RequestMapping("/edificio")
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @SessionAttributes("edificio")
 @Controller
 public class EdificioController {

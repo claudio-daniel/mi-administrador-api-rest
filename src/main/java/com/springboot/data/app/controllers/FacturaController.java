@@ -24,7 +24,7 @@ import com.springboot.data.app.models.service.IInquilinoService;
 import com.springboot.data.app.util.RutasTemplates;
 
 @Controller
-@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com" })
 @RequestMapping("/factura")
 @SessionAttributes("factura")
 public class FacturaController {
