@@ -9,17 +9,14 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.support.SessionStatus;
 
 import com.springboot.data.app.models.data.entity.Direccion;
 import com.springboot.data.app.models.service.IDireccionService;
 import com.springboot.data.app.util.RutasTemplates;
 @RequestMapping("/direccion")
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
 @SessionAttributes("")
 @Controller
 public class DireccionController {

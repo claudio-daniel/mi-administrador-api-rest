@@ -15,7 +15,7 @@ import javax.validation.Valid;
 import java.util.*;
 import java.util.stream.Collectors;
 
-@CrossOrigin(origins = { "http://localhost:4200" })
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
 @SessionAttributes("/inquilino")
 @RequestMapping("inquilino")
 @RestController

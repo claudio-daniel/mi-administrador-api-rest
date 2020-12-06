@@ -4,11 +4,13 @@ import java.security.Principal;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@CrossOrigin(origins = { "https://mi-administrador-front.herokuapp.com/" })
 public class LoginController {
 
 	@GetMapping("/login")
