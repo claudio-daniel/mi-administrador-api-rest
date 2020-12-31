@@ -15,6 +15,8 @@ public class InquilinoView{
 
 	private Date createAt;
 
+	private String tipo;
+
 	public Long getId() {
 		return id;
 	}
@@ -51,9 +53,11 @@ public class InquilinoView{
 		return createAt;
 	}
 
-	public void setCreateAt(Date createAt) {
-		this.createAt = createAt;
-	}
+	public void setCreateAt(Date createAt) { this.createAt = createAt; }
+
+	public String getTipo() { return tipo; }
+
+	public void setTipo(String tipo) { this.tipo = tipo; }
 
 	@Override
 	public String toString() {

@@ -53,6 +53,9 @@ public class Inquilino implements Serializable{
 	@DateTimeFormat(pattern = "dd-MM-yyyy") //sirve para dar formato en caso de precisarlo
 	private Date createAt;
 
+	@Column(name="tipo")
+	private String tipo;
+
 	@OneToMany(mappedBy="inquilino",  cascade=CascadeType.ALL )
 	private List<Factura> facturas; 
 	
@@ -126,7 +129,11 @@ public class Inquilino implements Serializable{
 	public void agregarFactura(Factura factura) {
 		this.facturas.add(factura);
 	}
-	
+
+	public String getTipo() { return tipo; }
+
+	public void setTipo(String tipo) { this.tipo = tipo; }
+
 	@Override
 	public String toString() {
 		return this.nombre + " " + this.apellido;

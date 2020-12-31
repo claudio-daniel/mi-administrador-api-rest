@@ -18,6 +18,7 @@ public class InquilinoTransformer {
 			inquilino.setApellido(inquilinoView.getApellido());
 			inquilino.setEmail(inquilinoView.getEmail());
 			inquilino.setCreateAt(inquilinoView.getCreateAt());
+			inquilino.setTipo(inquilinoView.getTipo());
 		}
 		
 		return inquilino;	
@@ -33,6 +34,7 @@ public InquilinoView convetToInquilinoView(Inquilino inquilino){
 			inquilinoView.setApellido(inquilino.getApellido());
 			inquilinoView.setEmail(inquilino.getEmail());
 			inquilinoView.setCreateAt(inquilino.getCreateAt());
+			inquilinoView.setTipo(inquilino.getTipo());
 		}
 		
 		return inquilinoView;

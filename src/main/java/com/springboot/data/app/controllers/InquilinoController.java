@@ -132,6 +132,8 @@ public class InquilinoController {
 			inquilinoActual.setNombre(inquilinoView.getNombre());
 			inquilinoActual.setApellido(inquilinoView.getApellido());
 			inquilinoActual.setEmail(inquilinoView.getEmail());
+			inquilinoActual.setTipo(inquilinoView.getTipo());
+			inquilinoActual.setCreateAt(inquilinoView.getCreateAt());
 			
 			inquilinoEditado = inquilinoService.save(inquilinoActual);
 		}

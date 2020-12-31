@@ -31,7 +31,7 @@ public class DepartamentoTransformer {
             departamento.setEdificio(edificio);
 
             departamento.setExpensas(departamentoView.getExpensas());
-            departamento.setEstado(departamentoView.getEstado());
+            //departamento.setEstado(departamentoView.getEstado());
             //departamento.setInquilino(departamentoView.getInquilino());
             //departamento.setPropietario(departamentoView.getPropietario());
             departamento.setServicios(departamentoView.getServicios());
@@ -47,6 +47,15 @@ public class DepartamentoTransformer {
             departamentoView.setId(departamento.getId());
             departamentoView.setNombre(departamento.getNombre());
             departamentoView.setCantidadHabitaciones(departamento.getCantidadHabitaciones());
+            departamentoView.setKilometros(departamento.getKilometros());
+            departamentoView.setCaballosFuerza(departamento.getCaballosFuerza());
+            departamentoView.setFecha(departamento.getFecha());
+            departamentoView.setEstado(departamento.getEstado().getDescripcion());
+            departamentoView.setMarca(departamento.getMarca());
+            departamentoView.setModelo(departamento.getModelo());
+            departamentoView.setPatente(departamento.getPatente());
+            departamentoView.setTipo(departamento.getTipo());
+            departamentoView.setTraccion(departamento.getTraccion());
 
             Map<String, Object> edificio = new HashMap<>();
             edificio.put("id", departamento.getEdificio().getId());
@@ -64,6 +73,7 @@ public class DepartamentoTransformer {
             Map<String, Object> inquilino = new HashMap<>();
             inquilino.put("id", departamento.getInquilino().getId());
             inquilino.put("nombre", departamento.getInquilino().getNombre());
+            inquilino.put("fecha", departamento.getInquilino().getCreateAt());
             departamentoView.setInquilino(inquilino);
 
     //        departamentoView.setServicios(departamento.getServicios());

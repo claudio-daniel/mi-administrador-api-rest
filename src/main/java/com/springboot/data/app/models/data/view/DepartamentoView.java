@@ -2,6 +2,7 @@ package com.springboot.data.app.models.data.view;
 
 import com.springboot.data.app.models.data.entity.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -21,43 +22,159 @@ public class DepartamentoView {
 
     private List<Expensa> expensas;
 
-    private DepartamentoEstado estado;
+    private String estado;
 
     private Integer cantidadHabitaciones;
 
-    public Long getId() { return id; }
+    private String patente;
 
-    public void setId(Long id) { this.id = id; }
+    private String caballosFuerza;
 
-    public String getNombre() {return nombre; }
+    private Integer kilometros;
 
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    private String modelo;
 
-    public Map<String, Object> getEdificio() { return edificio; }
+    private String traccion;
 
-    public void setEdificio(Map<String, Object> edificio) { this.edificio = edificio; }
+    private String tipo;
 
-    public Map<String, Object> getInquilino() { return inquilino; }
+    private String marca;
 
-    public void setInquilino(Map<String, Object> inquilino) { this.inquilino = inquilino; }
+    private LocalDate fecha;
 
-    public List<Expensa> getExpensas() { return expensas; }
+    public Long getId() {
+        return id;
+    }
 
-    public void setExpensas(List<Expensa> expensas) { this.expensas = expensas; }
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-    public DepartamentoEstado getEstado() { return estado; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public void setEstado(DepartamentoEstado estado) { this.estado = estado; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public Map<String, Object> getPropietario() { return propietario; }
+    public Map<String, Object> getEdificio() {
+        return edificio;
+    }
 
-    public void setPropietario(Map<String, Object> propietario) { this.propietario = propietario; }
+    public void setEdificio(Map<String, Object> edificio) {
+        this.edificio = edificio;
+    }
 
-    public List<Servicio> getServicios() { return servicios; }
+    public Map<String, Object> getInquilino() {
+        return inquilino;
+    }
 
-    public void setServicios(List<Servicio> servicios) { this.servicios = servicios; }
+    public void setInquilino(Map<String, Object> inquilino) {
+        this.inquilino = inquilino;
+    }
 
-    public Integer getCantidadHabitaciones() { return cantidadHabitaciones; }
+    public List<Expensa> getExpensas() {
+        return expensas;
+    }
 
-    public void setCantidadHabitaciones(Integer cantidadHabitaciones) { this.cantidadHabitaciones = cantidadHabitaciones; }
+    public void setExpensas(List<Expensa> expensas) {
+        this.expensas = expensas;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public Map<String, Object> getPropietario() {
+        return propietario;
+    }
+
+    public void setPropietario(Map<String, Object> propietario) {
+        this.propietario = propietario;
+    }
+
+    public List<Servicio> getServicios() {
+        return servicios;
+    }
+
+    public void setServicios(List<Servicio> servicios) {
+        this.servicios = servicios;
+    }
+
+    public Integer getCantidadHabitaciones() {
+        return cantidadHabitaciones;
+    }
+
+    public void setCantidadHabitaciones(Integer cantidadHabitaciones) {
+        this.cantidadHabitaciones = cantidadHabitaciones;
+    }
+
+    public String getPatente() {
+        return patente;
+    }
+
+    public void setPatente(String patente) {
+        this.patente = patente;
+    }
+
+    public String getCaballosFuerza() {
+        return caballosFuerza;
+    }
+
+    public void setCaballosFuerza(String caballosFuerza) {
+        this.caballosFuerza = caballosFuerza;
+    }
+
+    public Integer getKilometros() {
+        return kilometros;
+    }
+
+    public void setKilometros(Integer kilometros) {
+        this.kilometros = kilometros;
+    }
+
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public String getTraccion() {
+        return traccion;
+    }
+
+    public void setTraccion(String traccion) {
+        this.traccion = traccion;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
+    }
+
+    public LocalDate getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(LocalDate fecha) {
+        this.fecha = fecha;
+    }
 }
